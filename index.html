@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Digital Clock</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Clock</h1>
+    <div class="theme-pick" aria-label="Choose theme">
+      <span>Theme</span>
+      <button id="theme-button" type="button" class="theme-button" aria-haspopup="listbox" aria-expanded="false">Dark</button>
+      <ul id="theme-menu" class="theme-menu" role="listbox" hidden>
+        <li role="option" data-theme="light" aria-selected="false">Light</li>
+        <li role="option" data-theme="dark" aria-selected="true">Dark</li>
+        <li role="option" data-theme="ocean" aria-selected="false">Ocean</li>
+        <li role="option" data-theme="sunset" aria-selected="false">Sunset</li>
+        <li role="option" data-theme="forest" aria-selected="false">Forest</li>
+        <li role="option" data-theme="neon" aria-selected="false">Neon</li>
+      </ul>
+    </div>
+  </header>
+
+  <nav role="tablist" aria-label="Sections">
+    <button role="tab" data-tab="clock" aria-selected="true">Clock</button>
+    <button role="tab" data-tab="world" aria-selected="false">World</button>
+    <button role="tab" data-tab="alarm" aria-selected="false">Alarm</button>
+    <button role="tab" data-tab="timer" aria-selected="false">Timer</button>
+  </nav>
+
+  <main>
+    <section id="tab-clock" class="panel">
+      <div id="time"><span id="hm">--:--</span><span id="sec">:--</span><span id="ampm"></span></div>
+      <p id="date"></p>
+      <button id="fmt">Switch to 24-hour</button>
+    </section>
+
+    <section id="tab-world" class="panel" hidden>
+      <div class="row">
+        <select id="zone-select" aria-label="Time zone"></select>
+        <button id="zone-add">Add city</button>
+      </div>
+      <ul id="zone-list" class="list"></ul>
+    </section>
+
+    <section id="tab-alarm" class="panel" hidden>
+      <div class="row">
+        <input type="time" id="alarm-time" aria-label="Alarm time">
+        <input type="text" id="alarm-label" placeholder="Label (optional)" maxlength="30" aria-label="Alarm label">
+        <button id="alarm-add">Add alarm</button>
+        <button id="alarm-test" class="ghost">Test sound</button>
+      </div>
+      <div id="ringing" class="banner" hidden>
+        <span id="ringing-text"></span><button id="ringing-stop">Stop</button>
+      </div>
+      <ul id="alarm-list" class="list"></ul>
+    </section>
+
+    <section id="tab-timer" class="panel" hidden>
+      <h2>Stopwatch</h2>
+      <div id="sw-display" class="big">00:00.00</div>
+      <div class="row">
+        <button id="sw-start">Start</button><button id="sw-lap" class="ghost">Lap</button><button id="sw-reset" class="ghost">Reset</button>
+      </div>
+      <ol id="laps" class="list"></ol>
+
+      <h2>Countdown</h2>
+      <div id="cd-display" class="big">05:00</div>
+      <div class="row" id="cd-inputs">
+        <input type="number" id="cd-min" min="0" max="999" value="5" aria-label="Minutes"> min
+        <input type="number" id="cd-sec" min="0" max="59" value="0" aria-label="Seconds"> sec
+      </div>
+      <div class="row">
+        <button id="cd-start">Start</button><button id="cd-reset" class="ghost">Reset</button>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+/* Themes: each one only redefines these variables */
+:root{--bg:#E6EDF5;--ink:#14213D;--muted:#5B6B86;--accent:#D9452B;--panel:#D3DEEB;--on-accent:#fff}
+[data-theme="dark"]{--bg:#0F1B33;--ink:#EAF0FA;--muted:#93A3C0;--accent:#FF7A59;--panel:#1A2B4D;--on-accent:#0F1B33}
+[data-theme="ocean"]{--bg:#06282F;--ink:#DDF6F5;--muted:#7FB7B8;--accent:#2EC4B6;--panel:#0C3D46;--on-accent:#06282F}
+[data-theme="sunset"]{--bg:#2B1B3D;--ink:#FFE9D6;--muted:#D9A5A0;--accent:#FF8C42;--panel:#402857;--on-accent:#2B1B3D}
+[data-theme="forest"]{--bg:#16281D;--ink:#E4F0DC;--muted:#9DB89A;--accent:#A7C957;--panel:#21382A;--on-accent:#16281D}
+[data-theme="neon"]{--bg:#0A0612;--ink:#F5F0FF;--muted:#A99BD1;--accent:#FF2E93;--panel:#1B1030;--on-accent:#fff}
+
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,sans-serif;
+  display:flex;flex-direction:column;align-items:center;padding:1rem;transition:background .3s}
+header,nav,main{width:100%;max-width:640px}
+header{display:flex;justify-content:space-between;align-items:center}
+h1{margin:0;font-size:1.4rem} h2{margin:1.5rem 0 .25rem;font-size:1.1rem;color:var(--muted)}
+nav{display:flex;gap:.5rem;margin:1rem 0}
+nav button{flex:1;background:var(--panel);color:var(--ink)}
+nav button[aria-selected="true"]{background:var(--accent);color:var(--on-accent)}
+.theme-pick{position:relative;display:inline-flex;align-items:center;gap:.75rem;padding:.45rem .8rem;border:2px solid var(--accent);border-radius:999px;background:var(--panel);color:var(--ink);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);margin-left:auto}
+.theme-button{appearance:none;-webkit-appearance:none;background:transparent;border:none;color:var(--ink);font:inherit;min-width:7.5rem;padding:.3rem .8rem .3rem .25rem;cursor:pointer;outline:none;border-radius:999px;position:relative;z-index:1;text-align:center}
+.theme-pick::after{content:"";position:absolute;right:1rem;top:50%;width:8px;height:8px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:translateY(-60%) rotate(45deg);pointer-events:none}
+.theme-menu{position:absolute;top:calc(100% + .45rem);right:0;left:auto;list-style:none;margin:0;padding:.35rem;display:grid;gap:.25rem;background:var(--panel);border:2px solid var(--accent);border-radius:18px;box-shadow:0 12px 24px rgba(0,0,0,.18);min-width:9rem;z-index:20}
+.theme-menu[hidden]{display:none}
+.theme-menu li{padding:.5rem .8rem;border-radius:999px;cursor:pointer;color:var(--ink);list-style:none;transition:background .15s ease,color .15s ease}
+.theme-menu li:hover,.theme-menu li.selected{background:var(--accent);color:var(--on-accent)}
+.panel{text-align:center}
+button,select,input{font:inherit;color:var(--ink);background:var(--panel);border:1px solid transparent;border-radius:999px;padding:.55rem 1.1rem}
+button{cursor:pointer} button:hover{background:var(--accent);color:var(--on-accent)}
+button.ghost{background:transparent;border-color:var(--muted)}
+button.ghost:hover{background:var(--panel);color:var(--ink)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+input[type=number]{width:5rem;text-align:center;border-radius:12px}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;align-items:center;margin:.75rem 0}
+#time{display:flex;align-items:flex-end;justify-content:center;gap:0;font-size:clamp(3rem,15vw,6.5rem);font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.02em;margin-top:1.5rem;line-height:1}
+#sec{color:var(--accent)} #ampm{font-size:.25em;color:var(--muted);margin-left:.3em;font-weight:400;align-self:flex-end;padding-bottom:.5em}
+#date{color:var(--muted);font-size:1.2rem}
+.big{font-size:clamp(2.5rem,12vw,4.5rem);font-weight:700;font-variant-numeric:tabular-nums}
+.list{list-style:none;padding:0;margin:1rem 0;display:grid;gap:.5rem;text-align:left}
+.list li{display:flex;justify-content:space-between;align-items:center;gap:.75rem;background:var(--panel);padding:.75rem 1rem;border-radius:14px;font-variant-numeric:tabular-nums}
+.list .sub{color:var(--muted);font-size:.85rem;display:block}
+.list .t{font-size:1.4rem;font-weight:600}
+.banner{background:var(--accent);color:var(--on-accent);padding:.75rem 1rem;border-radius:14px;display:flex;justify-content:space-between;align-items:center;animation:pulse 1s infinite}
+.banner button{background:var(--on-accent);color:var(--accent)}
+@keyframes pulse{50%{opacity:.7}}
+@media (prefers-reduced-motion:reduce){.banner{animation:none}}
